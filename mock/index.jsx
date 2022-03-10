@@ -1,4 +1,3 @@
-
 const songs = [
     {
         id: '001',
@@ -27,6 +26,24 @@ const songs = [
     }
 ]
 
+
+const Files = [
+  {
+      id: 1,
+      file: require('../assets/music/NgayDauTien-DucPhuc-7129810.mp3'),
+      title: 'Ngày Đầu tiên',
+      singer: 'Đức Phúc',
+      image: require('../assets/images/ducphuc.jpg')
+  },
+  {
+      id: 2,
+      file: require('../assets/music/YeuDuongKhoQuaThiChayVeKhocVoiAnh-ERIK-7128950.mp3'),
+      title: 'Chạy Về Khóc Với Anh',
+      singer: 'Erik',
+      image: require('../assets/images/erik.jpg')
+  },
+];
+
 const favoriteSongs = [
     {
         id: '001',
@@ -50,4 +67,4 @@ const favoriteSongs = [
     },
 ]
 
-export { songs, favoriteSongs };
+export { songs, favoriteSongs, Files };

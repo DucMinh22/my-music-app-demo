@@ -11,11 +11,13 @@ const TrackSound = ({ navigation }) => {
                 style={styles.input}
                 // onChangeText={onChangeNumber}
                 // value={number}
+                multiline
                 placeholder="Song or artist"
+                // keyboardType='numeric'
                 placeholderTextColor={'#dedfe5'}
             />
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 15 }}>
-                <Text style={{ fontSize: 20, color: 'white' }}>Playlists</Text>
+                <Text style={{ fontSize: 20, color: 'white' }}>Album</Text>
                 <Ionicons name="chevron-forward" color={'#3ab4ff'} size={15} style={{ paddingRight: 15 }} />
             </View>
             <View>
@@ -24,6 +26,7 @@ const TrackSound = ({ navigation }) => {
                     keyExtractor={item => item.id}
                     horizontal
                     showsHorizontalScrollIndicator={false}
+                    // numColumns={2}
                     renderItem={({ item, index }) => (
                         <TouchableOpacity
                             key={index}
@@ -59,11 +62,11 @@ const TrackSound = ({ navigation }) => {
                                         <Ionicons name="musical-notes" color={'#3ab4ff'} size={20} />
                                     </View>
                                 </LinearGradient>
-                                <View style={{flex: 1}}>
+                                <View style={{ flex: 1 }}>
                                     <Text style={{ color: 'white', fontWeight: 'bold' }}>{item.name}</Text>
                                     <Text style={{ color: '#dedfe5', marginTop: 5 }}>{item.artist}</Text>
                                 </View>
-                                <View style={{paddingRight: 15 }}>
+                                <View style={{ paddingRight: 15 }}>
                                     <Ionicons name="heart-outline" color={'#3ab4ff'} size={20} />
                                 </View>
                             </View>
@@ -82,11 +85,13 @@ const styles = StyleSheet.create({
         paddingLeft: 16
     },
     input: {
-        height: 40,
+        // height: 40,
         margin: 12,
         padding: 10,
+        paddingTop: 10,
+        paddingLeft: 20,
         borderRadius: 30,
-        height: 52,
+        height: 40,
         backgroundColor: '#8d9fe7ba',
         color: '#dedfe5',
         marginTop: 25

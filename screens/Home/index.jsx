@@ -13,6 +13,18 @@ const Home = ({ navigation }) => {
                     borderRadius: 100
                 }}
             />
+            {/* <Image
+                source={{
+                    uri: 'https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300'
+                }}
+                style={{
+                    width: 300,
+                    height: 300,
+                    // borderRadius: 100
+                    resizeMode: 'contain'
+                }}
+                accessible={true}
+            /> */}
             <Text
                 style={{
                     color: 'white',
@@ -22,7 +34,7 @@ const Home = ({ navigation }) => {
                 Welcome to my music app
             </Text>
             <PlayButton
-                onPress={() => { navigation.navigate('TrackSound')}}
+                onPress={() => { navigation.navigate('TrackSound') }}
                 style={{ marginTop: 202 }} />
         </View>
     )
