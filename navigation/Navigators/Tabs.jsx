@@ -4,8 +4,9 @@ import { ListSongs, Lyric } from "../../screens";
 
 const Tab = createBottomTabNavigator();
 
-const Tabs = () => (
-    <Tab.Navigator
+const Tabs = () => {
+    return (
+        <Tab.Navigator
         screenOptions={({ route }) => ({
             tabBarIcon: ({ focused, color, size }) => {
                 let iconName;
@@ -40,6 +41,7 @@ const Tabs = () => (
             }}
          />
     </Tab.Navigator>
-)
+    )
+}
 
 export default Tabs;

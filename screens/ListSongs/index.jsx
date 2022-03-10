@@ -1,19 +1,25 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useContext, useEffect } from 'react';
 import {
     Image, View, StyleSheet, TouchableOpacity, Text, ActivityIndicator,
 } from 'react-native';
 import { Audio } from 'expo-av';
 import { Ionicons, MaterialIcons, Entypo } from '@expo/vector-icons';
 import { Files } from '../../mock';
+import { TrackContext } from '../../contexts/TrackContext';
 
 const ListSongs = ({ navigation }) => {
+    const {currentSong} = useContext(TrackContext);
     const [Loaded, SetLoaded] = useState(false);
     const [Loading, SetLoading] = useState(false);
-    const [Playing, SetPlaying] = useState(false);
+    const [Playing, SetPlaying] = useState(false);  
     const [Duration, SetDuration] = useState(false);
     const CurrentIndex = useRef(0);
     const [Value, SetValue] = useState(0);
     const sound = useRef(new Audio.Sound());
+
+    console.log(currentSong);
+
+
 
     const UpdateStatus = async (data) => {
         try {
@@ -84,7 +90,7 @@ const ListSongs = ({ navigation }) => {
             }
         } catch (error) {
             SetPlaying(true);
-        }
+        }0
     };
 
     const HandleNext = async () => {
@@ -102,6 +108,11 @@ const ListSongs = ({ navigation }) => {
             CurrentIndex.current -= 1;
         }
     };
+
+    useEffect(() => {
+        CurrentIndex.current = currentSong
+    },[currentSong])
+    
     return (
         <View style={styles.container}>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: 24 }}>

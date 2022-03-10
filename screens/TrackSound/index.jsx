@@ -1,16 +1,22 @@
+import React, {useContext, useState} from "react";
 import { Image, View, StyleSheet, TouchableOpacity, TextInput, Text, FlatList } from 'react-native';
 import { LinearGradient } from "expo-linear-gradient"
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { favoriteSongs, songs } from '../../mock';
+import { favoriteSongs, songs, Files } from '../../mock';
+import { TrackContext } from "../../contexts/TrackContext";
 
 const TrackSound = ({ navigation }) => {
+    const { setCurrentSong } = useContext(TrackContext);
+    const [textValue, setTextValue] = useState('');
     return (
         <View style={styles.container}>
             <Text style={{ marginTop: 24, fontSize: 28, fontWeight: 'bold', color: '#3ab4ff' }}>Library</Text>
             <TextInput
                 style={styles.input}
-                // onChangeText={onChangeNumber}
-                // value={number}
+                onChangeText={(val) => {
+                    setTextValue(val);
+                }}
+                value={textValue}
                 multiline
                 placeholder="Song or artist"
                 // keyboardType='numeric'
@@ -47,14 +53,17 @@ const TrackSound = ({ navigation }) => {
             </View>
             <View>
                 <FlatList
-                    data={favoriteSongs}
+                    data={Files}
                     keyExtractor={item => item.id}
                     horizontal={false}
                     showsVerticalScrollIndicator={false}
                     renderItem={({ item, index }) => (
                         <TouchableOpacity
                             key={index}
-                            onPress={() => { navigation.navigate('Library') }}
+                            onPress={() => {
+                                navigation.navigate('Library');
+                                setCurrentSong(index);
+                            }}
                         >
                             <View style={{ marginTop: 20, flexDirection: 'row', alignItems: 'center' }}>
                                 <LinearGradient colors={['#0d5caf', '#121f50']} style={styles.buttonStyle}>
@@ -63,8 +72,8 @@ const TrackSound = ({ navigation }) => {
                                     </View>
                                 </LinearGradient>
                                 <View style={{ flex: 1 }}>
-                                    <Text style={{ color: 'white', fontWeight: 'bold' }}>{item.name}</Text>
-                                    <Text style={{ color: '#dedfe5', marginTop: 5 }}>{item.artist}</Text>
+                                    <Text style={{ color: 'white', fontWeight: 'bold' }}>{item.title}</Text>
+                                    <Text style={{ color: '#dedfe5', marginTop: 5 }}>{item.singer}</Text>
                                 </View>
                                 <View style={{ paddingRight: 15 }}>
                                     <Ionicons name="heart-outline" color={'#3ab4ff'} size={20} />
